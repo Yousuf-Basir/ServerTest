@@ -1,0 +1,13 @@
+Pages:
+    System info:
+        ✔ CPU info @done(21-08-06 00:29)
+        ✔ Disk space total @done(21-08-06 00:29)
+        ✔ Temp folder files and folder count @done(21-08-06 00:29)
+    File read/write:
+        ☐ Check if test file exist on home directory ()
+        ☐ Check if test file exist on Temp directory ()
+        ☐ Write file to home directory ()
+        ☐ Write file to Temp directory ()
+    Play video:
+        ☐ Download video on Temp folder
+        ☐ Stream video using Moovie.js
