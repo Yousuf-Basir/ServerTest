@@ -48,7 +48,7 @@ app.get("/writeToTemp", (req, res, next) => {
 });
 
 app.get("/readTempFile", (req, res, next) => {
-  readAFile(os.tmp()).then((data) => {
+  readAFile(os.tmpdir()).then((data) => {
     res.send(data);
   }).catch(err => {
     res.send(err);
@@ -58,7 +58,7 @@ app.get("/readTempFile", (req, res, next) => {
 
 app.get("/writeToAppDir", (req, res, next) => {
   writeAFile("/app", "I am in Temp folder").then(()=>{
-    res.send("file written to temp directory");
+    res.send("file written to App directory");
   }).catch(err => {
     res.send(err);
   });
