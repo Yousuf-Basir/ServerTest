@@ -22,15 +22,50 @@ app.get("/system-info", (req, res, next) => {
 });
 
 app.get("/writeToHome", (req, res, next) => {
-  writeAFile(os.homedir()).then(()=>{
+  writeAFile(os.homedir(), "I am in home folder").then(()=>{
     res.send("file written to home directory");
   }).catch(err => {
     res.send(err);
   });
 });
 
+
 app.get("/readHomeFile", (req, res, next) => {
   readAFile(os.homedir()).then((data) => {
+    res.send(data);
+  }).catch(err => {
+    res.send(err);
+  });
+});
+
+
+app.get("/writeToTemp", (req, res, next) => {
+  writeAFile(os.tmpdir(), "I am in Temp folder").then(()=>{
+    res.send("file written to temp directory");
+  }).catch(err => {
+    res.send(err);
+  });
+});
+
+app.get("/readTempFile", (req, res, next) => {
+  readAFile(os.tmp()).then((data) => {
+    res.send(data);
+  }).catch(err => {
+    res.send(err);
+  });
+});
+
+
+app.get("/writeToAppDir", (req, res, next) => {
+  writeAFile("/app", "I am in Temp folder").then(()=>{
+    res.send("file written to temp directory");
+  }).catch(err => {
+    res.send(err);
+  });
+});
+
+app.get("/readAppDirFile", (req, res, next) => {
+  readAFile("/app").then((data) => {
     res.send(data);
   }).catch(err => {
     res.send(err);

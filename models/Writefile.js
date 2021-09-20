@@ -2,7 +2,7 @@ const fs = require("fs");
 const os = require("os");
 const path = require("path");
 
-const writeAFile = (folder) => {
+const writeAFile = (folder, fileContent) => {
     const dateNow = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
   return new Promise((resolve, reject) => {
     fs.mkdir(path.join(folder, "iamyousufbasir"), { recursive: true }, (err) => {
@@ -12,7 +12,7 @@ const writeAFile = (folder) => {
       } else {
         fs.writeFile(
           path.join(folder, "iamyousufbasir", "testhome.txt"),
-          "Hello i am in home ⌚ " + dateNow,
+          fileContent  + " ⌚ " + dateNow,
           (err) => {
             if (err) {
               console.log(err);
