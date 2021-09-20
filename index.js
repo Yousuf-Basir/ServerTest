@@ -3,6 +3,7 @@ const path = require("path");
 const os = require("os");
 const systemInfoPromise = require('./models/SystemInfo');
 const { writeAFile } = require('./models/Writefile');
+const { readAFile } = require('./models/ReadFile');
 
 const PORT = process.env.PORT || 5000
 var app = express();
@@ -23,6 +24,14 @@ app.get("/system-info", (req, res, next) => {
 app.get("/writeToHome", (req, res, next) => {
   writeAFile(os.homedir()).then(()=>{
     res.send("file written to home directory");
+  }).catch(err => {
+    res.send(err);
+  });
+});
+
+app.get("/readHomeFile", (req, res, next) => {
+  readAFile(os.homedir()).then((data) => {
+    res.send(data);
   }).catch(err => {
     res.send(err);
   });
