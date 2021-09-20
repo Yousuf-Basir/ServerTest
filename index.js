@@ -1,6 +1,8 @@
 const express = require('express')
 const path = require("path");
+const os = require("os");
 const systemInfoPromise = require('./models/SystemInfo');
+const { writeAFile } = require('./models/Writefile');
 
 const PORT = process.env.PORT || 5000
 var app = express();
@@ -18,7 +20,13 @@ app.get("/system-info", (req, res, next) => {
   // res.render("pages/SystemInfo", {systemInfo: systemInfoObj});
 });
 
-
+app.get("/writeToHome", (req, res, next) => {
+  writeAFile(os.homedir()).then(()=>{
+    res.send("file written to home directory");
+  }).catch(err => {
+    res.send(err);
+  });
+});
 
 
 
